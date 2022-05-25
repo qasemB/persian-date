@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>persian-date</title>
+    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+    <style>
+      * {
+        direction: rtl;
+      }
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: url(/728985-2.jpg) no-repeat center;
+      }
+      #date_box {
+        width: 400px;
+        height: 150px;
+        background-color: #ffffff40;
+        backdrop-filter: blur(3px);
+        border-radius: 10px;
+        box-shadow: 0 0 37px #e7af4a;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        font-family: B zar;
+        color: white;
+        text-shadow: 0 0 16px #000000;
+        cursor: pointer;
+        animation-name: shain;
+        animation-iteration-count: infinite;
+        animation-duration: 2s;
+      }
+
+      @keyframes shain {
+        0% {
+          box-shadow: 0 0 5px #f57e47;
+        }
+        100% {
+          box-shadow: 0 0 80px #e7b04a00;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="date_box"></div>
+
+    <script>
+      let persianMonths = [
+        "فروردین",
+        "اردیبهشت",
+        "خرداد",
+        "تیر",
+        "مرداد",
+        "شهریور",
+        "مهر",
+        "آبان",
+        "آذر",
+        "دی",
+        "بهمن",
+        "اسفند",
+      ];
+
+      const getPersianDate = (date) => {
+        let newDate = moment(date);
+        let year = newDate.jYear();
+        let month = persianMonths[newDate.jMonth()];
+        let day = newDate.jDate();
+
+        return `${day} ${month} ${year}`;
+      };
+      document.getElementById("date_box").innerHTML =
+        getPersianDate("2020-05-10");
+    </script>
+  </body>
+</html>
